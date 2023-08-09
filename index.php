@@ -110,7 +110,7 @@
 </head>
 
 <body>
-    <form class="main" action="/" method="post">
+    <form class="main" action="." method="post">
 
         <div class="grid">
             <table  border="0" cellspacing="0" cellpadding="0">
