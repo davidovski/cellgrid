@@ -27,7 +27,6 @@
     <title>cellgrid</title>
 
     <style>
-        
         @font-face {
             font-family: pixel;
             src: url("font.woff")
@@ -42,7 +41,7 @@
         }
 
         .grid {
-            overflow: scroll;
+            overflow: auto;
             position: absolute;
             left: 50%;
             top: 50%;
@@ -68,29 +67,33 @@
             background: #373b41;
         }
 
-        #selector:target {
+        form:valid > #selector {
             height: 3em;
             visibility: visible;
             opacity: 1;
         }
 
+        input[type="color"] {
+            width: 20px;
+            height: 20px;
+        }
+
         input[type='radio'] {
             opacity: 0;
-            height: 100%;
-            width: 100%;
             margin: 0;
         }
 
         input[type='radio']:checked {
             opacity: 1;
+            height: 100%;
+            width: 100%;
         }
 
-        td {
+        .cell {
             position: relative;
             width: 10px;
             height: 10px;
         }
-
 
         table {
             border: 0.1em solid black;
@@ -99,12 +102,7 @@
             height: 640px;
         }
 
-        input[type="color"] {
-            width: 20px;
-            height: 20px;
-        }
 
-        
 
     </style>
 
@@ -121,11 +119,9 @@
                        for($y = 0; $y < $GRID_SIZE; ++$y) {
                            $id = "$x,$y";
                            $color = $grid[$x][$y];
-                           echo "<td style='background-color:$color;>";
-                           echo "<label for='cell1'>";
-                           echo "<a href='#selector'>";
-                           echo "<input type='radio' name='cell' id='cell$id' value='$id'>";
-                           echo "</a>";
+                           echo "<td style='background-color:$color;'>";
+                           echo "<label for='cell$id'>";
+                           echo "<input type='radio' name='cell' id='cell$id' value='$id' required>";
                            echo "</label>";
                            echo "</td>";
                        }
