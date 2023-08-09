@@ -15,9 +15,10 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pos = explode(",", $_POST["cell"]);
-        $grid[$pos[0]][$pos[1]] = $_POST["color"];
-
-        file_put_contents('array.json',  json_encode($grid));
+        if ($pos[0] >= 0 && $pos[1] >= 0 && $pos[0] < $GRID_SIZE && $pos[1] < $GRID_SIZE) {
+            $grid[$pos[0]][$pos[1]] = $_POST["color"];
+            file_put_contents('array.json',  json_encode($grid));
+        }
     }
 ?>
 
